@@ -39,4 +39,7 @@
     a lot of extra waste in the download.
   func:
   - refresh_ticker_data
+  - X
   vars:
+    X:
+    - dummy
