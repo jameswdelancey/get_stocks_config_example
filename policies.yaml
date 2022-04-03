@@ -30,3 +30,13 @@
   vars:
     X:
     - 1d
+- id: 4
+  name: ALL_TIMESERIES_CURRENT
+  desc: |
+    download all the ticker timeseries to get
+    them current. will automatically only query
+    the source for the tickers missing so there isn't
+    a lot of extra waste in the download.
+  func:
+  - refresh_ticker_data
+  vars:
