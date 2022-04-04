@@ -33,23 +33,23 @@
   vars:
     PERIOD: &PERIODS
     - 1d
-# - id: 4
-#   name: ALL_TIMESERIES_CURRENT
-#   desc: |
-#     download all the ticker timeseries to get
-#     them current. will automatically only query
-#     the source for the tickers missing so there isn't
-#     a lot of extra waste in the download.
-#   func:
-#   - refresh_ticker_data
-#   - TICKER
-#   - SOURCE
-#   - PERIOD
-#   vars_method: product
-#   vars:
-#     TICKER: *TICKERS
-#     SOURCE: *SOURCES
-#     PERIOD: *PERIODS
+- id: 4
+  name: ALL_TIMESERIES_CURRENT
+  desc: |
+    download all the ticker timeseries to get
+    them current. will automatically only query
+    the source for the tickers missing so there isn't
+    a lot of extra waste in the download.
+  func:
+  - refresh_ticker_data
+  - TICKER
+  - SOURCE
+  - PERIOD
+  vars_method: product
+  vars:
+    TICKER: *TICKERS
+    SOURCE: *SOURCES
+    PERIOD: *PERIODS
 - id: 5
   name: ALL_CALCULATIONS_EXISTS
   desc: |
@@ -61,13 +61,27 @@
   - TICKER
   - SOURCE
   - PERIOD
-  - OHLC_COLUMN
   vars_method: product
   vars:
     FUNC: &CALCULATION_FUNCS
-    - sma5
+    - sma:period=5,ohlc_column=close
     TICKER: *TICKERS
     SOURCE: *SOURCES
     PERIOD: *PERIODS
-    OHLC_COLUMN:
-    - close
+- id: 6
+  name: ALL_CALCULATION_TIMESERIES_CURRENT
+  desc: |
+    ensure all the calculations have timeseries
+    up to date.
+  func:
+  - refresh_calculation_data
+  - FUNC
+  - TICKER
+  - SOURCE
+  - PERIOD
+  vars_method: product
+  vars:
+    FUNC: *CALCULATION_FUNCS
+    TICKER: *TICKERS
+    SOURCE: *SOURCES
+    PERIOD: *PERIODS
