@@ -91,11 +91,11 @@
 #     ensure all the triggers are calc'd
 #     through the current data
 #   func:
-#     - refresh_triggers_data
-#     - FUNC
-#     - TICKER
-#     - SOURCE
-#     - PERIOD
+#   - refresh_triggers_data
+#   - FUNC
+#   - TICKER
+#   - SOURCE
+#   - PERIOD
 #   vars_method: product
 #   vars:
 #     FUNC: &TRIGGER_FUNCS
