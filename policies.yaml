@@ -85,3 +85,21 @@
     TICKER: *TICKERS
     SOURCE: *SOURCES
     PERIOD: *PERIODS
+# - id: 7
+#   name: ALL_TRIGGERS_TIMESERIES_CURRENT
+#   desc: |
+#     ensure all the triggers are calc'd
+#     through the current data
+#   func:
+#     - refresh_triggers_data
+#     - FUNC
+#     - TICKER
+#     - SOURCE
+#     - PERIOD
+#   vars_method: product
+#   vars:
+#     FUNC: &TRIGGER_FUNCS
+#     - sma:period=5,ohlc_column=close|sma:period=5,ohlc_column=close|helper
+#     TICKER: *TICKERS
+#     SOURCE: *SOURCES
+#     PERIOD: *PERIODS
